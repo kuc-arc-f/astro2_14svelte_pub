@@ -2,6 +2,35 @@ import LibCrud from '../../lib/LibCrud';
 
 const CrudIndex = {
   /**
+   * search
+   * @param
+   *
+   * @return
+   */    
+  search : async function() : Promise<any>
+  {
+    try {   
+//console.log("#search");    
+      const url = import.meta.env.PUBLIC_API_URL;
+      const searchKey = document.querySelector('#searchKey');
+      const item = { search_key: searchKey?.value}
+      const body = JSON.stringify(item);		
+      const res = await fetch(url + "/todos/search", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},      
+        body: body
+      });
+      const json = await res.json()
+      if (res.status != 200) {
+        throw new Error(await res.text());
+      }
+//console.log(json);
+      return json;
+    } catch (e) {
+      console.error(e);
+    }
+  },  
+  /**
   * getList
   * @param
   *
