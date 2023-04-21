@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import App from './App.svelte';
+
+
+const url = import.meta.env.PUBLIC_API_URL;
+let serverConfig = {url: url};
+serverConfig = JSON.stringify(serverConfig);
+console.log(serverConfig);
+
+---
+
+<Layout title="Welcome to Astro.">
+    <main class="container">
+        <App client:only="svelte" />
+    </main>
+</Layout>
+<!-- -->
+<style>
+</style>
+<!--
+<hr />
+<input type="hidden" id="server_config" value={serverConfig}></input>
+<h1>Gpt4-Svelte</h1>
+
+<a href={`/gpt3/create`} class="btn btn-primary">Create</a>
+<hr class="my-1" />
+ -->
