@@ -10,7 +10,14 @@ const startProc= async function() {
 	console.log(item);
 }
 startProc();
-
+//
+const deleteItem = async function() {
+	const ret = await CrudShow.delete(id);
+    console.log(ret);
+    if(ret) {
+        location.href = '/gpt4';
+    }
+}
 </script>
 
 <div class="">
@@ -24,6 +31,10 @@ startProc();
     title: {item.title}
     <p>タスクの内容: {item.content}</p>
     <p>完了状態: {item.completed ? '完了' : '未完了'}</p> 	
+    <hr />
+    <button class="btn btn-danger" on:click={deleteItem}>Delete
+    </button>
+    <hr />
 </div>
 
 <style>

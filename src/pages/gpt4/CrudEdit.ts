@@ -1,5 +1,6 @@
 import LibCrud from '../../lib/LibCrud';
 import Crud from './Crud';
+//import CrudCreate from './CrudCreate';
 //
 const CrudEdit = {
   /**
@@ -16,12 +17,12 @@ const CrudEdit = {
       console.log("url=", url); 
       const elm: any = document.querySelector('#item_id');
       const id = elm?.value;  
-      let values = Crud.getInputValues();  
+      let values = Crud.getTodoDataFromInput();  
       values.id = Number(id);
-  console.log(values);
-//return;
+console.log(values);
+//return false;
       const body = JSON.stringify(values);		
-      const res = await fetch(url + '/tasks/update', {
+      const res = await fetch(url + '/todos/update', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},      
         body: body
@@ -59,7 +60,7 @@ const CrudEdit = {
       const hid_completed_value = hid_completed?.value;      
       const completed = (<HTMLInputElement>document.querySelector("#completed"));
       if(Number(hid_completed_value) === 1) {
-        completed.checked = true;
+//        completed.checked = true;
       }
 
       //btn
@@ -67,9 +68,9 @@ const CrudEdit = {
       button.addEventListener('click', async() => {
         const res = await this.update();
 console.log("res=", res);
-      if(res) {
-        window.location.href = '/gpt';	
-      }
+        if(res) {
+          window.location.href = '/gpt4';	
+        }        
       }); 
     } catch (e) {
       console.error(e);

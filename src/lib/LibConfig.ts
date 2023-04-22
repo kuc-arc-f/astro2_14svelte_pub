@@ -3,10 +3,11 @@ const LibConfig = {
   OK_CODE: 'OK',
   NG_CODE: 'NG',  
   //
-  API_URL: "http://localhost:3000",
+//  API_URL: "http://localhost:3000",
+  API_URL: "",
   //
   SQLITE_FILE_PATH: "/app.sqlite",
-  STORAGE_KEY_DB: 'sqlite_db_astro11' ,
+  STORAGE_KEY_DB: 'sqlite_db_astro14' ,
 
   //session_key
   SESSION_KEY_USER: "user",

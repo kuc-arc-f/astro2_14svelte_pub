@@ -36,6 +36,8 @@ const search = async function() {
 		<p>ID : {item.id}
 			<a href={`/gpt4/show/${item.id}`} class="mx-2 btn btn-sm btn-outline-primary">Show
 			</a>
+			<a href={`/gpt4/edit/${item.id}`} class="btn">[ Edit ]
+			</a>			
 		</p>
 		<hr />
 	</div>
@@ -46,6 +48,4 @@ const search = async function() {
 </style>
 
 <!--
-<a href={`/crud/edit/${item.id}`} class="btn">[ Edit ]
-</a>					
 -->

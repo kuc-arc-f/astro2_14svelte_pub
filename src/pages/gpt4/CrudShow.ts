@@ -76,14 +76,6 @@ console.log(item);
       const elm: any = document.querySelector('#item_id');
       const id = elm?.value;
 console.log("id=", id);
-      const button: any = document.querySelector('#btn_delete');
-      button.addEventListener('click', async () => {
-        const res = await this.delete(Number(id));
-console.log(res);
-        if(res) {
-          window.location.href = '/gpt4';	
-        }
-      }); 
     } catch (e) {
       console.error(e);
     }    

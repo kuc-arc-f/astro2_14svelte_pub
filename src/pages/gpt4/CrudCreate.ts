@@ -4,38 +4,7 @@ import LibCrud from '../../lib/LibCrud';
 import Crud from './Crud';
 //
 const CrudCreate = {
-  /**
-   * :
-   * @param key: any
-   *
-   * @return
-   */   
-  getTodoDataFromInput: function(): any
-  {
-    try{
-//      const user_idInput = document.querySelector<HTMLInputElement>('#user_id'); // user_idのINPUTタグを取得
-      const titleInput = document.querySelector<HTMLInputElement>('#title'); // titleのINPUTタグを取得
-      const contentInput = document.querySelector<HTMLInputElement>('#content'); // contentのINPUTタグを取得
-      const completedInput = document.querySelector<HTMLInputElement>('#completed'); // completedのINPUTタグを取得
-    
-//      const user_id = user_idInput?.valueAsNumber || 0; // 数値として取得
-      const user_id = 0
-      const title = titleInput?.value || '';
-      const content = contentInput?.value || '';
-//      const completed = completedInput?.checked || false; // チェックされているかどうかを取得
-      const completed = 1;
-    
-      return {
-        user_id,
-        title,
-        content,
-        completed
-      };      
-    } catch (e) {
-      console.error(e);
-      throw new Error('Error , getTodoDataFromInput');
-    }
-  },
+
   /**
    * :
    * @param key: any
@@ -48,7 +17,7 @@ const CrudCreate = {
 //  console.log("PUBLIC_API_URL=", PUBLIC_API_URL);
       let ret = false;
       const url = import.meta.env.PUBLIC_API_URL + "/todos/create";
-      const item = this.getTodoDataFromInput();
+      const item = Crud.getTodoDataFromInput();
 console.log(item);
       const body = JSON.stringify(item);		
       const res = await fetch(url, {
