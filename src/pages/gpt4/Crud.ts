@@ -1,6 +1,40 @@
-import LibCrud from '../../lib/LibCrud';
+//import LibCrud from '../../lib/LibCrud';
+//
+interface Todo {
+  title: string;
+  content: string;
+}
 
+//
 const Crud = {
+  /**
+   * :
+   * @param key: any
+   *
+   * @return
+   */ 
+  validateTodo: function(todo: Todo): boolean
+  {
+    try {
+      const { title, content } = todo;
+      if (title === null || content === null) {
+        return false;
+      }
+      if (title.length === 0 || content.length === 0) {
+        return false;
+      }      
+      //      
+      if (title.length > 2) {
+        return false;
+      }
+      if (content.length > 200) {
+        return false;
+      }
+      return true;      
+    } catch (e) {
+      console.error(e);
+    }
+  },  
   /**
    * :
    * @param key: any
@@ -87,21 +121,20 @@ const Crud = {
   *
   * @return
   */   
+/*
   startProc :async function (): Promise<void> 
   {
     try{
       console.log("#startProc");
       const valid = await LibCrud.validLogin();
-//console.log("valid=", valid);
       if(valid === false) {
-//        alert("NG, valid Login");
       }
     } catch (e) {
       console.error(e);
     }    
   } 
+*/
 }
-//
-Crud.startProc();
+//Crud.startProc();
 
 export default Crud;

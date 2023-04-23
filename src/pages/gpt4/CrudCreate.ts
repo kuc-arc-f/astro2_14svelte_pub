@@ -1,10 +1,14 @@
 import LibCrud from '../../lib/LibCrud';
-//import LibAuth from '../../lib/LibAuth';
-//import LibConfig from '../../lib/LibConfig';
 import Crud from './Crud';
 //
-const CrudCreate = {
+interface Todo {
+  title: string;
+  content: string;
+}
 
+//
+const CrudCreate = {
+  
   /**
    * :
    * @param key: any
@@ -18,7 +22,14 @@ const CrudCreate = {
       let ret = false;
       const url = import.meta.env.PUBLIC_API_URL + "/todos/create";
       const item = Crud.getTodoDataFromInput();
-console.log(item);
+      const valid = Crud.validateTodo(item);
+//console.log(item);
+      if(!valid) {
+        console.log("valid=", valid);
+        alert("Error, input value");
+        return false;
+      }
+//return;
       const body = JSON.stringify(item);		
       const res = await fetch(url, {
         method: 'POST',

@@ -1,6 +1,5 @@
 import LibCrud from '../../lib/LibCrud';
 import Crud from './Crud';
-//import CrudCreate from './CrudCreate';
 //
 const CrudEdit = {
   /**
@@ -19,6 +18,13 @@ const CrudEdit = {
       const id = elm?.value;  
       let values = Crud.getTodoDataFromInput();  
       values.id = Number(id);
+      const valid = Crud.validateTodo(values);
+//console.log(item);
+      if(!valid) {
+        console.log("valid=", valid);
+        alert("Error, input value");
+        return false;
+      }      
 console.log(values);
 //return false;
       const body = JSON.stringify(values);		
